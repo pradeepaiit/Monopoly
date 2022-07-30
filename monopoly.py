@@ -1,10 +1,16 @@
 import json
 import array as arr
+import numpy as np
 
 Peter = 16
 Billy = 16
 Charlotte = 16
 Sweedal = 16
+
+Players = [Peter, Billy, Charlotte, Sweedal]
+
+total = 0
+game = True
 
 x = open('board.json')
 y = open('rolls_1.json')
@@ -14,19 +20,19 @@ a = json.load(x)
 b = json.load(y)
 c = json.load(z)
 
+# for i in range[49]:
 
-num = 0
-count = 0
-num_of_plyrs = 4
-stop = False
+arr1 =np.array('i',b)
+arr2 =np.array('q',c)
 
-arr1 =arr.array('l',b)
-arr2 =arr.array('q',c)
+total =np.add(arr1, arr2)
 
-Peter = (arr1[0],arr2[0])
+Peter_value = (total)
+Billy_value = (arr1[1])
+Charlotte_value = (arr1[2])
+Sweedal_value = (arr1[3])
 
-print("Peter's turn:", Peter)
-
-while not stop:
-    if count == 4:
-        stop == True
+print("Peter's turn:", Peter_value)
+print("Billy's turn:", Billy)
+print("Charlotte's turn:", Charlotte)
+print("Sweedal's turn:", Sweedal)
