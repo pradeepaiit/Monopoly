@@ -83,11 +83,30 @@ def submit(numberofplayers):
             placey=placey+80
     
             namedropdownlabel=Label(screen,text="Select Player", font="bold, 11")
-            namedropdownlabel.place(x=20, y=400)
+            namedropdownlabel.place(x=20, y=425)
             
+            selectedname=StringVar()
+            selectedname.set("Player name")
+            drop=OptionMenu(screen,selectedname, *namelist)
+            drop.place(x=160,y=420)
             
+            buyorselllabel=Label(screen,text="Select Option", font="bold, 11")
+            buyorselllabel.place(x=20,y=450)
             
+            buyorsell=StringVar()
+            buyorsell.set("Select Option")
+            drop=OptionMenu(screen,buyorsell,*buyorsell)
             
+            amountlabel=Label(screen,text="Select Amount", font="bold, 11")
+            amountlabel.place(x=20, y=480)
+            
+            amount=Entry(screen,borderwidth=5, highlightthickness=0)       
+            amount.place(x=160, y=490, width=110, height=25)     
+            
+            button=Button(screen,text="submit", command=lambda:score(screen,namelist,money,initial_money,selectedname.get(), buyorsell.get(), amount.get()),border=1)
+            button.place(x=150, y=520)
+            
+            screen.mainloop()
             
             
     titlelabel=Label(root, text = "MONOPOLY BANK", font="bold, 20")
