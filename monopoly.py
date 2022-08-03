@@ -48,6 +48,23 @@ root.resizable(False,False)
 namelist=[]
 number = 0 
 
+def score(screen, namelist, money, initial_money, name, buyorsell, amount):
+   index=namelist.index(name)
+   if buyorsell=="ADD":
+       amountadded=int(money[index])+int(amount)
+       money[index]=amountadded
+   elif buyorsell=="DEDUCT":
+       amountadded=int(money[index])-int(amount)
+       money[index]=amountadded
+       placey=80
+       for i in money:
+           moneydroplabel=Label(screen,text=i,font="bold, 16")
+           moneydroplabel.place(x=200, y=placey)
+           
+           placey=placey+35
+           
+           
+
 def submit(numberofplayers):
     global namelist
     global number
@@ -57,7 +74,7 @@ def submit(numberofplayers):
     
     if(number==int(numberofplayers)):
         root.destroy()
-        gamescreen(namelist)
+        gamescreen(namelist) 
         
     def gamescreen(namelist):
         screen=Tk()
@@ -95,7 +112,9 @@ def submit(numberofplayers):
             
             buyorsell=StringVar()
             buyorsell.set("Select Option")
-            drop=OptionMenu(screen,buyorsell,*buyorsell)
+            buyorsell=["ADD", "DEDUCT"]
+            buyorsell=OptionMenu(screen,buyorsell,*buyorsell)
+            buyorsell.place(x=160, y=450  )
             
             amountlabel=Label(screen,text="Select Amount", font="bold, 11")
             amountlabel.place(x=20, y=480)
@@ -103,7 +122,7 @@ def submit(numberofplayers):
             amount=Entry(screen,borderwidth=5, highlightthickness=0)       
             amount.place(x=160, y=490, width=110, height=25)     
             
-            button=Button(screen,text="submit", command=lambda:score(screen,namelist,money,initial_money,selectedname.get(), buyorsell.get(), amount.get()),border=1)
+            button=Button(screen,text="submit", command=lambda:score(screen,namelist,money,initial_money,selectedname.get(), buyorsell.get(), amount.get()),border=1, height=1, width=1)
             button.place(x=150, y=520)
             
             screen.mainloop()
